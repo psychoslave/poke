@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  base_experience: 1
+  forms_names: MyString
+  height: 1
+  pokeapi_id: 1
+  is_default: false
+  name: MyString
+  order: 1
+  types: one
+  weight: 1
+  abilities_is_hidden: false
+  abilities_slot: 1
+  abilities_names: MyString
+
+two:
+  base_experience: 1
+  forms_names: MyString
+  height: 1
+  pokeapi_id: 1
+  is_default: false
+  name: MyString
+  order: 1
+  types: two
+  weight: 1
+  abilities_is_hidden: false
+  abilities_slot: 1
+  abilities_names: MyString

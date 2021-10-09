@@ -1,0 +1,77 @@
+<%= form_with(model: pokemon) do |form| %>
+  <% if pokemon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pokemon.errors.count, "error") %> prohibited this pokemon from being saved:</h2>
+
+      <ul>
+        <% pokemon.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :base_experience %>
+    <%= form.number_field :base_experience %>
+  </div>
+
+  <div class="field">
+    <%= form.label :forms_names %>
+    <%= form.text_field :forms_names %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.number_field :height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pokeapi_id %>
+    <%= form.number_field :pokeapi_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_default %>
+    <%= form.check_box :is_default %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order %>
+    <%= form.number_field :order %>
+  </div>
+
+  <div class="field">
+    <%= form.label :types_id %>
+    <%= form.text_field :types_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.number_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :abilities_is_hidden %>
+    <%= form.check_box :abilities_is_hidden %>
+  </div>
+
+  <div class="field">
+    <%= form.label :abilities_slot %>
+    <%= form.number_field :abilities_slot %>
+  </div>
+
+  <div class="field">
+    <%= form.label :abilities_names %>
+    <%= form.text_field :abilities_names %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pokeapi_id: 1
+  name: MyString
+  generation_name: MyString
+  double_damage_from: one
+  double_damage_to: one
+  half_damage_from: one
+  half_damage_to: one
+  no_damage_from: one
+  no_damage_to: one
+  generation_name: MyString
+  move_damage_class_name: MyString
+  moves_names: MyString
+  pokemon: one
+
+two:
+  pokeapi_id: 1
+  name: MyString
+  generation_name: MyString
+  double_damage_from: two
+  double_damage_to: two
+  half_damage_from: two
+  half_damage_to: two
+  no_damage_from: two
+  no_damage_to: two
+  generation_name: MyString
+  move_damage_class_name: MyString
+  moves_names: MyString
+  pokemon: two

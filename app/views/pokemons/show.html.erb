@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Base experience:</strong>
+  <%= @pokemon.base_experience %>
+</p>
+
+<p>
+  <strong>Forms names:</strong>
+  <%= @pokemon.forms_names %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @pokemon.height %>
+</p>
+
+<p>
+  <strong>Pokeapi:</strong>
+  <%= @pokemon.pokeapi_id %>
+</p>
+
+<p>
+  <strong>Is default:</strong>
+  <%= @pokemon.is_default %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pokemon.name %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @pokemon.order %>
+</p>
+
+<p>
+  <strong>Types:</strong>
+  <%= @pokemon.types_id %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @pokemon.weight %>
+</p>
+
+<p>
+  <strong>Abilities is hidden:</strong>
+  <%= @pokemon.abilities_is_hidden %>
+</p>
+
+<p>
+  <strong>Abilities slot:</strong>
+  <%= @pokemon.abilities_slot %>
+</p>
+
+<p>
+  <strong>Abilities names:</strong>
+  <%= @pokemon.abilities_names %>
+</p>
+
+<%= link_to 'Edit', edit_pokemon_path(@pokemon) %> |
+<%= link_to 'Back', pokemons_path %>

@@ -1,0 +1,82 @@
+<%= form_with(model: type) do |form| %>
+  <% if type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(type.errors.count, "error") %> prohibited this type from being saved:</h2>
+
+      <ul>
+        <% type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pokeapi_id %>
+    <%= form.number_field :pokeapi_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :generation_name %>
+    <%= form.text_field :generation_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :double_damage_from_id %>
+    <%= form.text_field :double_damage_from_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :double_damage_to_id %>
+    <%= form.text_field :double_damage_to_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :half_damage_from_id %>
+    <%= form.text_field :half_damage_from_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :half_damage_to_id %>
+    <%= form.text_field :half_damage_to_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :no_damage_from_id %>
+    <%= form.text_field :no_damage_from_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :no_damage_to_id %>
+    <%= form.text_field :no_damage_to_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :generation_name %>
+    <%= form.text_field :generation_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :move_damage_class_name %>
+    <%= form.text_field :move_damage_class_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :moves_names %>
+    <%= form.text_field :moves_names %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pokemon_id %>
+    <%= form.text_field :pokemon_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
