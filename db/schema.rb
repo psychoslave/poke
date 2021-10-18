@@ -20,14 +20,19 @@ ActiveRecord::Schema.define(version: 2021_10_09_140139) do
     t.boolean "is_default"
     t.string "name"
     t.integer "order"
-    t.integer "types_id", null: false
     t.integer "weight"
     t.boolean "abilities_is_hidden"
     t.integer "abilities_slot"
     t.string "abilities_names"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["types_id"], name: "index_pokemons_on_types_id"
+  end
+
+  create_table "pokemons_types", id: false, force: :cascade do |t|
+    t.integer "pokemon_id", null: false
+    t.integer "type_id", null: false
+    t.index ["pokemon_id"], name: "index_pokemons_types_on_pokemon_id"
+    t.index ["type_id"], name: "index_pokemons_types_on_type_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -42,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_10_09_140139) do
     t.integer "no_damage_to_id", null: false
     t.string "move_damage_class_name"
     t.string "moves_names"
-    t.integer "pokemon_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["double_damage_from_id"], name: "index_types_on_double_damage_from_id"
@@ -51,15 +55,12 @@ ActiveRecord::Schema.define(version: 2021_10_09_140139) do
     t.index ["half_damage_to_id"], name: "index_types_on_half_damage_to_id"
     t.index ["no_damage_from_id"], name: "index_types_on_no_damage_from_id"
     t.index ["no_damage_to_id"], name: "index_types_on_no_damage_to_id"
-    t.index ["pokemon_id"], name: "index_types_on_pokemon_id"
   end
 
-  add_foreign_key "pokemons", "types", column: "types_id"
-  add_foreign_key "types", "double_damage_froms"
-  add_foreign_key "types", "double_damage_tos"
-  add_foreign_key "types", "half_damage_froms"
-  add_foreign_key "types", "half_damage_tos"
-  add_foreign_key "types", "no_damage_froms"
-  add_foreign_key "types", "no_damage_tos"
-  add_foreign_key "types", "pokemons"
+  add_foreign_key "types", "types", column: "double_damage_from_id"
+  add_foreign_key "types", "types", column: "double_damage_to_id"
+  add_foreign_key "types", "types", column: "half_damage_from_id"
+  add_foreign_key "types", "types", column: "half_damage_to_id"
+  add_foreign_key "types", "types", column: "no_damage_from_id"
+  add_foreign_key "types", "types", column: "no_damage_to_id"
 end
