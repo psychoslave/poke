@@ -10,7 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_134616) do
+ActiveRecord::Schema.define(version: 2021_10_09_140139) do
+
+  create_table "double_damage_from", id: false, force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "object_id"
+    t.index ["object_id", "subject_id"], name: "index_double_damage_from_on_object_id_and_subject_id", unique: true
+    t.index ["subject_id", "object_id"], name: "index_double_damage_from_on_subject_id_and_object_id", unique: true
+  end
+
+  create_table "double_damage_to", id: false, force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "object_id"
+    t.index ["object_id", "subject_id"], name: "index_double_damage_to_on_object_id_and_subject_id", unique: true
+    t.index ["subject_id", "object_id"], name: "index_double_damage_to_on_subject_id_and_object_id", unique: true
+  end
+
+  create_table "half_damage_from", id: false, force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "object_id"
+    t.index ["object_id", "subject_id"], name: "index_half_damage_from_on_object_id_and_subject_id", unique: true
+    t.index ["subject_id", "object_id"], name: "index_half_damage_from_on_subject_id_and_object_id", unique: true
+  end
+
+  create_table "half_damage_to", id: false, force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "object_id"
+    t.index ["object_id", "subject_id"], name: "index_half_damage_to_on_object_id_and_subject_id", unique: true
+    t.index ["subject_id", "object_id"], name: "index_half_damage_to_on_subject_id_and_object_id", unique: true
+  end
+
+  create_table "no_damage_from", id: false, force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "object_id"
+    t.index ["object_id", "subject_id"], name: "index_no_damage_from_on_object_id_and_subject_id", unique: true
+    t.index ["subject_id", "object_id"], name: "index_no_damage_from_on_subject_id_and_object_id", unique: true
+  end
+
+  create_table "no_damage_to", id: false, force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "object_id"
+    t.index ["object_id", "subject_id"], name: "index_no_damage_to_on_object_id_and_subject_id", unique: true
+    t.index ["subject_id", "object_id"], name: "index_no_damage_to_on_subject_id_and_object_id", unique: true
+  end
 
   create_table "pokemons", force: :cascade do |t|
     t.integer "base_experience"
@@ -24,6 +66,23 @@ ActiveRecord::Schema.define(version: 2021_10_09_134616) do
     t.boolean "abilities_is_hidden"
     t.integer "abilities_slot"
     t.string "abilities_names"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pokemons_types", id: false, force: :cascade do |t|
+    t.integer "pokemon_id", null: false
+    t.integer "type_id", null: false
+    t.index ["pokemon_id"], name: "index_pokemons_types_on_pokemon_id"
+    t.index ["type_id"], name: "index_pokemons_types_on_type_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.integer "pokeapi_id"
+    t.string "name"
+    t.string "generation_name"
+    t.string "move_damage_class_name"
+    t.string "moves_names"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

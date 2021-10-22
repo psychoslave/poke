@@ -66,16 +66,30 @@ PokeApi.get(type: {limit: Type_count}).results.each do |wad|
     pokeapi_id: ens.id,
     name: ens.name,
     generation_name: ens.generation.name,
-    double_damage_from_id: ens.damage_relations.double_damage_from.map{|ens| ens.url.match(/(\d+)\/$/)[1]},
-    double_damage_to_id: ens.damage_relations.double_damage_to.map{|ens| ens.url.match(/(\d+)\/$/)[1]},
-    half_damage_from_id: ens.damage_relations.half_damage_from.map{|ens| ens.url.match(/(\d+)\/$/)[1]},
-    half_damage_to_id: ens.damage_relations.half_damage_to.map{|ens| ens.url.match(/(\d+)\/$/)[1]},
-    no_damage_from_id: ens.damage_relations.no_damage_from.map{|ens| ens.url.match(/(\d+)\/$/)[1]},
-    no_damage_to_id: ens.damage_relations.no_damage_to.map{|ens| ens.url.match(/(\d+)\/$/)[1]},
-    move_damage_class_name: ens.move_damage_class.name,
+    move_damage_class_name: ens&.move_damage_class&.name,
     moves_names: ens.instance_variable_get(:@moves).map{|ens| ens.name}.sort,
-    #pokemon_id: ens.pokemon.map{|ens| ens.pokemon.url.match(/(\d+)\/$/)[1]},
   )
+  type.pokemons = Pokemon.where(id: ens.pokemon.map{|ens| ens.pokemon.url.match(/(\d+)\/$/)[1]} )
+  if !type.save
+    $stderr.puts "Something went wrong for adding pokemons to type #{ens.id}):"\
+      "#{type.errors.full_messages}"
+  end
+end
+
+PokeApi.get(type: {limit: Type_count}).results.each do |wad|
+  bib = wad.url.match(/(\d+)\/$/)[1]
+  ens = PokeApi.get(type: bib)
+  type = Type.find(ens.id)
+  type.double_damage_from = Type.where(id: ens.damage_relations.double_damage_from.map{|ens| ens.url.match(/(\d+)\/$/)[1]})
+  type.double_damage_to = Type.where(id: ens.damage_relations.double_damage_to.map{|ens| ens.url.match(/(\d+)\/$/)[1]})
+  type.half_damage_from = Type.where(id: ens.damage_relations.half_damage_from.map{|ens| ens.url.match(/(\d+)\/$/)[1]})
+  type.half_damage_to = Type.where(id: ens.damage_relations.half_damage_to.map{|ens| ens.url.match(/(\d+)\/$/)[1]})
+  type.no_damage_from = Type.where(id: ens.damage_relations.no_damage_from.map{|ens| ens.url.match(/(\d+)\/$/)[1]})
+  type.no_damage_to = Type.where(id: ens.damage_relations.no_damage_to.map{|ens| ens.url.match(/(\d+)\/$/)[1]})
+  if !type.save
+    $stderr.puts "Something went wrong while adding damage relationships to type #{ens.id}):"\
+      "#{type.errors.full_messages}"
+  end
 end
 
 # Update each pokemon with relevant foreign keys from Type
