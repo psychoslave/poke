@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_140139) do
+ActiveRecord::Schema.define(version: 2021_10_09_134616) do
 
   create_table "pokemons", force: :cascade do |t|
     t.integer "base_experience"
@@ -28,39 +28,4 @@ ActiveRecord::Schema.define(version: 2021_10_09_140139) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "pokemons_types", id: false, force: :cascade do |t|
-    t.integer "pokemon_id", null: false
-    t.integer "type_id", null: false
-    t.index ["pokemon_id"], name: "index_pokemons_types_on_pokemon_id"
-    t.index ["type_id"], name: "index_pokemons_types_on_type_id"
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.integer "pokeapi_id"
-    t.string "name"
-    t.string "generation_name"
-    t.integer "double_damage_from_id", null: false
-    t.integer "double_damage_to_id", null: false
-    t.integer "half_damage_from_id", null: false
-    t.integer "half_damage_to_id", null: false
-    t.integer "no_damage_from_id", null: false
-    t.integer "no_damage_to_id", null: false
-    t.string "move_damage_class_name"
-    t.string "moves_names"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["double_damage_from_id"], name: "index_types_on_double_damage_from_id"
-    t.index ["double_damage_to_id"], name: "index_types_on_double_damage_to_id"
-    t.index ["half_damage_from_id"], name: "index_types_on_half_damage_from_id"
-    t.index ["half_damage_to_id"], name: "index_types_on_half_damage_to_id"
-    t.index ["no_damage_from_id"], name: "index_types_on_no_damage_from_id"
-    t.index ["no_damage_to_id"], name: "index_types_on_no_damage_to_id"
-  end
-
-  add_foreign_key "types", "types", column: "double_damage_from_id"
-  add_foreign_key "types", "types", column: "double_damage_to_id"
-  add_foreign_key "types", "types", column: "half_damage_from_id"
-  add_foreign_key "types", "types", column: "half_damage_to_id"
-  add_foreign_key "types", "types", column: "no_damage_from_id"
-  add_foreign_key "types", "types", column: "no_damage_to_id"
 end
