@@ -17,32 +17,32 @@
 
 <p>
   <strong>Double damage from:</strong>
-  <%= @type.double_damage_from_id %>
+  <%= @type.double_damage_from.map{|ens| ens.name}.join(', ') %>
 </p>
 
 <p>
   <strong>Double damage to:</strong>
-  <%= @type.double_damage_to_id %>
+  <%= @type.double_damage_to.map{|ens| ens.name}.join(', ') %>
 </p>
 
 <p>
   <strong>Half damage from:</strong>
-  <%= @type.half_damage_from_id %>
+  <%= @type.half_damage_from.map{|ens| ens.name}.join(', ') %>
 </p>
 
 <p>
   <strong>Half damage to:</strong>
-  <%= @type.half_damage_to_id %>
+  <%= @type.half_damage_to.map{|ens| ens.name}.join(', ') %>
 </p>
 
 <p>
   <strong>No damage from:</strong>
-  <%= @type.no_damage_from_id %>
+  <%= @type.no_damage_from.map{|ens| ens.name}.join(', ') %>
 </p>
 
 <p>
   <strong>No damage to:</strong>
-  <%= @type.no_damage_to_id %>
+  <%= @type.no_damage_to.map{|ens| ens.name}.join(', ') %>
 </p>
 
 <p>
@@ -57,12 +57,13 @@
 
 <p>
   <strong>Moves names:</strong>
-  <%= @type.moves_names %>
+  <%# NSFW but YOLO and this is fun %>
+  <%= eval(@type.moves_names)&.join(', ') %>
 </p>
 
 <p>
   <strong>Pokemon:</strong>
-  <%= @type.pokemon_id %>
+  <%= @type.pokemons.map{|ens| ens.name}.join(', ') %>
 </p>
 
 <%= link_to 'Edit', edit_type_path(@type) %> |

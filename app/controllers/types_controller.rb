@@ -3,7 +3,9 @@ class TypesController < ApplicationController
 
   # GET /types or /types.json
   def index
-    @types = Type.all
+    damages = %i[double_damage_from double_damage_to half_damage_from
+                 half_damage_to no_damage_from no_damage_to pokemons]
+    @types = Type.includes(damages).all
   end
 
   # GET /types/1 or /types/1.json

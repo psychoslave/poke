@@ -3,7 +3,7 @@ class PokemonsController < ApplicationController
 
   # GET /pokemons or /pokemons.json
   def index
-    @pokemons = Pokemon.all
+    @pokemons = Pokemon.includes(:types).all
   end
 
   # GET /pokemons/1 or /pokemons/1.json
@@ -64,6 +64,6 @@ class PokemonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pokemon_params
-      params.require(:pokemon).permit(:base_experience, :forms_names, :height, :pokeapi_id, :is_default, :name, :order, :types_id, :weight, :abilities_is_hidden, :abilities_slot, :abilities_names)
+      params.require(:pokemon).permit(:base_experience, :forms_names, :height, :pokeapi_id, :is_default, :name, :order, :type_ids, :weight, :abilities_is_hidden, :abilities_slot, :abilities_names)
     end
 end
