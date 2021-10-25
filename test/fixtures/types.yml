@@ -12,8 +12,8 @@ one:
   no_damage_to: one
   generation_name: MyString
   move_damage_class_name: MyString
-  moves_names: MyString
-  pokemon: one
+  moves_names: '["acupressure", "after-you"]'
+  pokemons: one
 
 two:
   pokeapi_id: 1
@@ -27,5 +27,5 @@ two:
   no_damage_to: two
   generation_name: MyString
   move_damage_class_name: MyString
-  moves_names: MyString
-  pokemon: two
+  moves_names: '["wring-out", "yawn"]'
+  pokemons: two

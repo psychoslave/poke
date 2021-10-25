@@ -17,7 +17,7 @@ class PokemonsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create pokemon" do
     assert_difference('Pokemon.count') do
-      post pokemons_url, params: { pokemon: { abilities_is_hidden: @pokemon.abilities_is_hidden, abilities_names: @pokemon.abilities_names, abilities_slot: @pokemon.abilities_slot, base_experience: @pokemon.base_experience, forms_names: @pokemon.forms_names, height: @pokemon.height, is_default: @pokemon.is_default, name: @pokemon.name, order: @pokemon.order, pokeapi_id: @pokemon.pokeapi_id, types_id: @pokemon.types_id, weight: @pokemon.weight } }
+      post pokemons_url, params: { pokemon: { abilities_is_hidden: @pokemon.abilities_is_hidden, abilities_names: @pokemon.abilities_names, abilities_slot: @pokemon.abilities_slot, base_experience: @pokemon.base_experience, forms_names: @pokemon.forms_names, height: @pokemon.height, is_default: @pokemon.is_default, name: @pokemon.name, order: @pokemon.order, pokeapi_id: @pokemon.pokeapi_id, types: @pokemon.types, weight: @pokemon.weight } }
     end
 
     assert_redirected_to pokemon_url(Pokemon.last)
@@ -34,7 +34,7 @@ class PokemonsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update pokemon" do
-    patch pokemon_url(@pokemon), params: { pokemon: { abilities_is_hidden: @pokemon.abilities_is_hidden, abilities_names: @pokemon.abilities_names, abilities_slot: @pokemon.abilities_slot, base_experience: @pokemon.base_experience, forms_names: @pokemon.forms_names, height: @pokemon.height, is_default: @pokemon.is_default, name: @pokemon.name, order: @pokemon.order, pokeapi_id: @pokemon.pokeapi_id, types_id: @pokemon.types_id, weight: @pokemon.weight } }
+    patch pokemon_url(@pokemon), params: { pokemon: { abilities_is_hidden: @pokemon.abilities_is_hidden, abilities_names: @pokemon.abilities_names, abilities_slot: @pokemon.abilities_slot, base_experience: @pokemon.base_experience, forms_names: @pokemon.forms_names, height: @pokemon.height, is_default: @pokemon.is_default, name: @pokemon.name, order: @pokemon.order, pokeapi_id: @pokemon.pokeapi_id, types: @pokemon.types, weight: @pokemon.weight } }
     assert_redirected_to pokemon_url(@pokemon)
   end
 

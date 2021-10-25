@@ -10,6 +10,12 @@ class TypesController < ApplicationController
 
   # GET /types/1 or /types/1.json
   def show
+    # assume that move_names is a valid ruby array code snippet
+    @moves = begin
+          eval(@type.moves_names)&.join(', ')
+        rescue Exception
+          ''
+        end
   end
 
   # GET /types/new

@@ -17,7 +17,7 @@ class TypesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create type" do
     assert_difference('Type.count') do
-      post types_url, params: { type: { double_damage_from_id: @type.double_damage_from_id, double_damage_to_id: @type.double_damage_to_id, generation_name: @type.generation_name, half_damage_from_id: @type.half_damage_from_id, half_damage_to_id: @type.half_damage_to_id, move_damage_class_name: @type.move_damage_class_name, moves_names: @type.moves_names, name: @type.name, no_damage_from_id: @type.no_damage_from_id, no_damage_to_id: @type.no_damage_to_id, pokeapi_id: @type.pokeapi_id, pokemon_id: @type.pokemon_id } }
+      post types_url, params: { type: { double_damage_from: @type.double_damage_from, double_damage_to: @type.double_damage_to, generation_name: @type.generation_name, half_damage_from: @type.half_damage_from, half_damage_to: @type.half_damage_to, move_damage_class_name: @type.move_damage_class_name, moves_names: @type.moves_names, name: @type.name, no_damage_from: @type.no_damage_from, no_damage_to: @type.no_damage_to, pokeapi_id: @type.pokeapi_id, pokemons: @type.pokemons } }
     end
 
     assert_redirected_to type_url(Type.last)
@@ -34,7 +34,7 @@ class TypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update type" do
-    patch type_url(@type), params: { type: { double_damage_from_id: @type.double_damage_from_id, double_damage_to_id: @type.double_damage_to_id, generation_name: @type.generation_name, half_damage_from_id: @type.half_damage_from_id, half_damage_to_id: @type.half_damage_to_id, move_damage_class_name: @type.move_damage_class_name, moves_names: @type.moves_names, name: @type.name, no_damage_from_id: @type.no_damage_from_id, no_damage_to_id: @type.no_damage_to_id, pokeapi_id: @type.pokeapi_id, pokemon_id: @type.pokemon_id } }
+    patch type_url(@type), params: { type: { double_damage_from: @type.double_damage_from, double_damage_to: @type.double_damage_to, generation_name: @type.generation_name, half_damage_from: @type.half_damage_from, half_damage_to: @type.half_damage_to, move_damage_class_name: @type.move_damage_class_name, moves_names: @type.moves_names, name: @type.name, no_damage_from: @type.no_damage_from, no_damage_to: @type.no_damage_to, pokeapi_id: @type.pokeapi_id, pokemons: @type.pokemons } }
     assert_redirected_to type_url(@type)
   end
 
