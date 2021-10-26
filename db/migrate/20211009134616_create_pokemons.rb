@@ -8,7 +8,6 @@ class CreatePokemons < ActiveRecord::Migration[6.1]
       t.boolean :is_default
       t.string :name
       t.integer :order
-      #t.references :types, null: true, foreign_key: true
       t.integer :weight
       t.boolean :abilities_is_hidden
       t.integer :abilities_slot

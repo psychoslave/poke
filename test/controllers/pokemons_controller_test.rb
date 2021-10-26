@@ -6,8 +6,12 @@ class PokemonsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get pokemons_url
+    get pokemons_url, as: :json
     assert_response :success
+    result = response.parsed_body
+    sample = result.first
+    assert_equal result.count, Pokemon.count
+    assert_equal sample.keys, %w[id name types]
   end
 
   test "should get new" do
@@ -24,8 +28,13 @@ class PokemonsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show pokemon" do
-    get pokemon_url(@pokemon)
+    get pokemon_url(@pokemon), as: :json
     assert_response :success
+
+    # result should contains all attributes of a pokemon, but nothing else
+    result = response.parsed_body
+    assert_equal result.keys - Pokemon.first.attribute_names, %w[types]
+    assert 'types'.in?(result.keys)
   end
 
   test "should get edit" do
