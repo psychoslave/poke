@@ -38,6 +38,8 @@ and edition through forms offer no garantee.
 The following stack of version is known to work with this application, but
 prior versions might also be compatible.
 
+| Component                 | Version         |
+-----------------------------------------------
 | Rails version             | 6.1.4.1         |
 | Ruby version              | 2.5.9p229       |
 | RubyGems version          | 2.7.6.3         |
@@ -50,6 +52,8 @@ The data are modeled around two main classes, `pokemons` and `types`.
 Various damage relationships liking each type with each others also have their
 own tables.
 
+![Overview of the database schema](https://raw.githubusercontent.com/psychoslave/poke/main/db/schema.png)
+
 Note that the application doesn't provides all attributes that Pokeapi document,
 and most of the time flatten the model. For example `Pokemon` as a `forms_names`
 direct attribute rather than a relation to a `forms` table that would hold
@@ -58,3 +62,5 @@ and data are stored as comma separated values.
 
 The only notable exception to this flattenized policy are damage relationships
 which link types to each others.
+
+
