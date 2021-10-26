@@ -8,6 +8,7 @@ only on pokemons themselves and their types.
 
 ```
 git clone git@github.com:psychoslave/poke.git
+cd poke
 bundle install
 bin/rails db:setup
 bin/rails server
@@ -41,13 +42,11 @@ and edition through forms offer no garantee.
 The following stack of version is known to work with this application, but
 prior versions might also be compatible.
 
-| Component                 | Version         |
------------------------------------------------
-| Rails version             | 6.1.4.1         |
-| Ruby version              | 2.5.9p229       |
-| RubyGems version          | 2.7.6.3         |
-| Rack version              | 2.2.3           |
-| Database                  | sqlite3 3.34.1  |
+- Rails version: 6.1.4.1
+- Ruby version: 2.5.9p229
+- RubyGems version: 2.7.6.3
+- Rack version: 2.2.3
+- Database: sqlite3 3.34.1
 
 # Architecture
 
@@ -57,7 +56,7 @@ own tables.
 
 ![Overview of the database schema](https://raw.githubusercontent.com/psychoslave/poke/main/db/schema.png)
 
-Note that the application doesn't provides all attributes that Pokeapi document,
+Note that the application doesn't provide all attributes that Pokeapi document,
 and most of the time flatten the model. For example `Pokemon` as a `forms_names`
 direct attribute rather than a relation to a `forms` table that would hold
 a name. For this kind of field, the initial word is left pluralized in the name
