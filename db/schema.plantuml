@@ -1,0 +1,27 @@
+@startuml
+hide empty members
+class pokemons {
+  integer base_experience
+  string forms_names
+  integer height
+  integer pokeapi_id
+  boolean is_default
+  string name
+  integer order
+  integer weight
+  boolean abilities_is_hidden
+  integer abilities_slot
+  string abilities_names
+}
+class types {
+  integer pokeapi_id
+  string name
+  string generation_name
+  string move_damage_class_name
+  string moves_names
+}
+class "{double,half,no}damage{from,to}" as damages
+
+pokemons "0,*" -- "0,*" types
+types "0,*" -- "0,*" damages
+@enduml
