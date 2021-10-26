@@ -9,10 +9,13 @@ only on pokemons themselves and their types.
 ```
 git clone git@github.com:psychoslave/poke.git
 bundle install
-bin/rails db:migrate
-bin/rails runner scripts/populate.rb
+bin/rails db:setup
 bin/rails server
 ```
+
+If for some reason you need to reinitialize the database, you can use
+`bin/rails db:reset`. That's also the way to go to resynchronize data with
+possible evolution on PokeAPI data.
 
 # Usage
 
