@@ -6,6 +6,10 @@ only on pokemons themselves and their types.
 
 # Installation
 
+## Testing localy
+
+You can run the application locally provided that you alreday have Ruby and
+Bundler installed, simply run the following instructions:
 ```
 git clone git@github.com:psychoslave/poke.git
 cd poke
@@ -17,6 +21,27 @@ bin/rails server
 If for some reason you need to reinitialize the database, you can use
 `bin/rails db:reset`. That's also the way to go to resynchronize data with
 possible evolution on PokeAPI data.
+
+## Deploying on Heroku
+
+A [living instance is available on Heroku](https://poke-jig.herokuapp.com/pokemons.json).
+
+Note that production environment is setup to use Postgres as database, as SQLite
+is not available.
+
+After [account creation](https://signup.heroku.com/) and
+[basic setup](https://devcenter.heroku.com/articles/getting-started-with-ruby#set-up),
+independant instances can be deployed through the following instructions:
+```
+git clone git@github.com:psychoslave/poke.git
+heroku login
+heroku git:remote -a $heroku_project_name
+git push heroku main
+heroku run rake db:migrate
+heroku run rake db:seed
+heroku ps:scale web=1
+heroku open
+```
 
 # Usage
 
